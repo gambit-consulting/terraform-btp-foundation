@@ -6,17 +6,16 @@ This module creates and manages SAP BTP subaccounts with optional Cloud Foundry 
 
 ```hcl
 module "development_subaccount" {
-  source = "git@github.com:gambit-consulting/terraform-btp.git//modules/subaccount?ref=v0.1.0"
+  source  = "gambit-consulting/foundation/btp//modules/subaccount"
+  version = "0.0.1"
+
   name                    = "Development"
-  subdomain               = "my-org-dev"
-  parent_directory_id     = var.parent_directory_id
+  subdomain               = "org-sales-eu-dev"
   region                  = "eu10"
-  is_production           = false
-  enable_cloudfoundry     = true
-  cf_plan_name            = "standard"
-  enable_custom_ias_trust = true
-  ias_tenant_host         = "mytenant.authentication.eu10.hana.ondemand.com"
-  contact_persons         = ["admin@company.com"]
+
+  description             = "Subaccount for development stage"
+  parent_directory_id     = "Sales"
+  ias_tenant_host         = "<tenant>.accounts.ondemand.com"
 }
 ```
 
@@ -27,14 +26,14 @@ module "development_subaccount" {
 | name                    | string            | required   | Display name of the subaccount                         |
 | subdomain               | string            | required   | Subdomain for the subaccount (lowercase, hyphens only) |
 | region                  | string            | required   | BTP region (e.g., eu10, us10, ap10)                    |
-| parent_directory_id     | string            | null       | ID of the parent BTP directory                         |
 | description             | string            | null       | Description of the subaccount                          |
+| parent_directory_id     | string            | null       | ID of the parent BTP directory                         |
+| ias_tenant_host         | string            | null       | IAS tenant host for custom trust config                |
 | is_production           | bool              | false      | Whether subaccount is used for production              |
 | status                  | string            | "active"   | Status label: active or inactive                       |
 | contact_persons         | list(string)      | []         | Contact person email addresses                         |
 | additional_labels       | map(list(string)) | {}         | Custom labels for the subaccount                       |
 | enable_custom_ias_trust | bool              | false      | Enable custom IAS trust configuration                  |
-| ias_tenant_host         | string            | null       | IAS tenant host for custom trust config                |
 | enable_cloudfoundry     | bool              | false      | Enable Cloud Foundry environment                       |
 | cf_plan_name            | string            | "standard" | Cloud Foundry plan: trial or standard                  |
 
