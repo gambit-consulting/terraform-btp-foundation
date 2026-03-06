@@ -94,12 +94,63 @@ modules/module-name/
 
 ### Commit Message Format
 
-Use clear, descriptive commit messages:
-Add: Brief description of what was added
-Or:
-Fix: Brief description of what was fixed
-Or:
-Update: Brief description of what was updated
+This repository enforces [Conventional Commits](https://www.conventionalcommits.org/) using commitlint and pre-commit hooks.
+
+**Format:**
+```
+<type>(<scope>): <subject>
+
+[optional body]
+
+[optional footer]
+```
+
+**Required Components:**
+- **type**: The kind of change (see allowed types below)
+- **scope**: OPTIONAL - The area of the codebase affected (see allowed scopes below)
+- **subject**: A brief description (max 72 characters total for header)
+
+**Allowed Types:**
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation changes only
+- `style`: Code style changes (formatting, missing semicolons, etc.)
+- `refactor`: Code refactoring without adding features or fixing bugs
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks, dependency updates
+- `ci`: CI/CD configuration changes
+- `build`: Build system or external dependency changes
+- `revert`: Reverting a previous commit
+
+**Allowed Scopes (Optional, but must be one of these if provided):**
+- `core`: Root-level infrastructure and provider configuration
+- `subaccount`: Subaccount module changes
+- `service/integrationsuite`: Integration Suite service module changes
+
+**Examples of Valid Commit Messages:**
+```
+feat(subaccount): Add support for custom labels
+fix(core): Resolve provider authentication timeout
+docs: Update README with installation steps
+chore: Update dependencies
+refactor(service/integrationsuite): Simplify provisioning logic
+```
+
+**Setup Pre-commit Hooks:**
+
+Before making your first commit, install the pre-commit hooks:
+
+```bash
+# Install pre-commit (if not already installed)
+# macOS: brew install pre-commit
+# or: pip install pre-commit
+
+# Install the git hooks
+pre-commit install --hook-type commit-msg
+```
+
+The hooks will automatically validate your commit messages and block commits that don't follow the conventional format.
 
 ### Questions or Need Help?
 
