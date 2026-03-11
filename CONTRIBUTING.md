@@ -92,11 +92,21 @@ modules/module-name/
 └── README.md # Module documentation
 ```
 
+### Module Development Guide
+
+Modules follow a consistent structure for extensibility:
+
+- Each module is self-contained with its own variables, resources, and outputs
+- Use descriptive variable names and documentation
+- Test changes locally: `terraform init && terraform validate && terraform plan`
+- Ensure README.md is updated with any new inputs/outputs
+
 ### Commit Message Format
 
 This repository enforces [Conventional Commits](https://www.conventionalcommits.org/) using commitlint and pre-commit hooks.
 
 **Format:**
+
 ```
 <type>(<scope>): <subject>
 
@@ -106,11 +116,13 @@ This repository enforces [Conventional Commits](https://www.conventionalcommits.
 ```
 
 **Required Components:**
+
 - **type**: The kind of change (see allowed types below)
 - **scope**: OPTIONAL - The area of the codebase affected (see allowed scopes below)
 - **subject**: A brief description (max 72 characters total for header)
 
 **Allowed Types:**
+
 - `feat`: A new feature
 - `fix`: A bug fix
 - `docs`: Documentation changes only
@@ -124,11 +136,13 @@ This repository enforces [Conventional Commits](https://www.conventionalcommits.
 - `revert`: Reverting a previous commit
 
 **Allowed Scopes (Optional, but must be one of these if provided):**
+
 - `core`: Root-level infrastructure and provider configuration
 - `subaccount`: Subaccount module changes
 - `service/integrationsuite`: Integration Suite service module changes
 
 **Examples of Valid Commit Messages:**
+
 ```
 feat(subaccount): Add support for custom labels
 fix(core): Resolve provider authentication timeout
