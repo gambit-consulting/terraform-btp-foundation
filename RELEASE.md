@@ -4,24 +4,23 @@ Simple guide for contributing code and releasing new versions to the Terraform R
 
 ## For Developers
 
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ### 1. Create Feature Branch & Make Changes
 
 ```bash
 git checkout -b feature/your-feature-name
-# Make your changes, follow CONTRIBUTING.md
 ```
 
 ### 2. Commit Using Conventional Commits
 
-Commits must follow [Conventional Commits](https://www.conventionalcommits.org/) format (enforced by commitlint):
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 ```bash
 git commit -m "feat(subaccount): Add custom labels"
 git commit -m "fix(core): Resolve timeout issue"
 git commit -m "docs: Update README"
 ```
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for allowed types and scopes.
 
 ### 3. Push & Create Pull Request
 
@@ -30,6 +29,7 @@ git push origin feature/your-feature-name
 ```
 
 On GitHub:
+
 - **Title**: Use conventional commit format (e.g., `feat(subaccount): Add custom labels`)
 - **Description**: Explain what changed and why
 - **Link issues**: Use `Closes #123` if applicable
@@ -37,6 +37,7 @@ On GitHub:
 ### 4. Mark PR as Ready
 
 Once your PR is ready for review:
+
 - Ensure all validation passes (terraform fmt, validate)
 - Request review from maintainers
 - Address any feedback
@@ -51,12 +52,12 @@ This project uses [Semantic Versioning](https://semver.org/) determined by [Conv
 
 ### Version Bumping Quick Reference
 
-| Commit Type | Bump | Example |
-|---|---|---|
-| `feat` | MINOR | v0.0.1 → v0.1.0 |
-| `fix` | PATCH | v0.1.0 → v0.1.1 |
+| Commit Type                  | Bump  | Example         |
+| ---------------------------- | ----- | --------------- |
+| `feat`                       | MINOR | v0.0.1 → v0.1.0 |
+| `fix`                        | PATCH | v0.1.0 → v0.1.1 |
 | `feat!` or `BREAKING CHANGE` | MAJOR | v0.1.0 → v1.0.0 |
-| `docs`, `chore`, `refactor` | None | No release |
+| `docs`, `chore`, `refactor`  | None  | No release      |
 
 ### Release Process
 
@@ -83,15 +84,18 @@ Add entry following [Keep a Changelog](https://keepachangelog.com/) format:
 ## [0.1.0] - 2026-03-06
 
 ### Added
+
 - Feature from feat(...) commits
 
 ### Fixed
+
 - Bug fixes from fix(...) commits
 
 [0.1.0]: https://github.com/gambit-consulting/terraform-btp-foundation/releases/tag/v0.1.0
 ```
 
 Compile from commits:
+
 ```bash
 git log v0.0.1..HEAD --format="- %s"
 ```
@@ -114,6 +118,7 @@ git push origin v0.1.0
 **Step 5: Create GitHub Release**
 
 Via GitHub UI:
+
 1. Go to: https://github.com/gambit-consulting/terraform-btp-foundation/releases
 2. Click "Draft a new release"
 3. Select tag: `v0.1.0`
@@ -122,6 +127,7 @@ Via GitHub UI:
 6. Click "Publish release"
 
 Via CLI:
+
 ```bash
 gh release create v0.1.0 --title "v0.1.0" --notes "$(cat changelog_excerpt.md)"
 ```
@@ -131,11 +137,13 @@ HCP Terraform Registry automatically indexes the tag and publishes the module.
 ### Merging Pull Requests
 
 Review PR, ensure:
+
 - Commits follow conventional format
 - All checks pass
 - Changes are documented
 
 Merge using:
+
 - **Squash and merge** (for multiple commits) → Creates single commit
 - **Create a merge commit** (for clean history) → Preserves all commits
 
@@ -143,54 +151,10 @@ PR closes automatically after merge.
 
 ---
 
-## Release Examples
-
-### Example 1: Minor Release (v0.1.0)
-
-```bash
-# Commits: feat(subaccount): Add labels, fix(core): Timeout
-git log v0.0.1..HEAD --oneline
-# → Next version: v0.1.0 (has feat)
-
-# Update CHANGELOG.md, commit, tag
-git add CHANGELOG.md
-git commit -m "chore(core): Release version 0.1.0"
-git tag -a v0.1.0 -m "Release version 0.1.0"
-git push origin main v0.1.0
-```
-
-### Example 2: Major Release (v1.0.0)
-
-```bash
-# Commits include: feat!: Breaking change
-git log v0.1.0..HEAD --oneline
-# → Next version: v1.0.0 (breaking change)
-
-# Update CHANGELOG.md with migration guide, commit, tag
-git add CHANGELOG.md
-git commit -m "chore(core): Release version 1.0.0"
-git tag -a v1.0.0 -m "Release version 1.0.0 - First stable release"
-git push origin main v1.0.0
-```
-
-### Example 3: Patch Release (v0.1.1)
-
-```bash
-# Commits: only fix(...)
-git log v0.1.0..HEAD --oneline
-# → Next version: v0.1.1 (patch)
-
-git add CHANGELOG.md
-git commit -m "chore(core): Release version 0.1.1"
-git tag -a v0.1.1 -m "Release version 0.1.1"
-git push origin main v0.1.1
-```
-
----
-
 ## Summary
 
 **Developers:**
+
 1. Create feature branch
 2. Commit with conventional format
 3. Create PR with conventional title
@@ -198,6 +162,7 @@ git push origin main v0.1.1
 5. Maintainers merge → changes included in next release
 
 **Maintainers:**
+
 1. Review commits since last release
 2. Determine version bump from commit types
 3. Update CHANGELOG.md from commit messages
@@ -206,6 +171,7 @@ git push origin main v0.1.1
 6. HCP auto-publishes to Terraform Registry
 
 **Key Resources:**
+
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Semantic Versioning](https://semver.org/)
 - [Keep a Changelog](https://keepachangelog.com/)
