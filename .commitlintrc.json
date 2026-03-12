@@ -26,8 +26,8 @@
       [
         "core",
         "subaccount",
-        "service/integrationsuite",
-        "service/workzone"
+        "srv-integrationsuite",
+        "srv-workzone"
       ]
     ],
     "scope-case": [2, "always", "lower-case"],

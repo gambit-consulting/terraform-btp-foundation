@@ -25,7 +25,7 @@ module "subaccount" {
 
 module "integrationsuite" {
   count  = var.enable_integrationsuite ? 1 : 0
-  source = "./modules/service/integrationsuite"
+  source = "./modules/srv-integrationsuite"
 
   subaccount_id = module.subaccount.id
   service_name  = var.integrationsuite_service_name

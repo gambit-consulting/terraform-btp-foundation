@@ -79,7 +79,7 @@ After applying the configuration, you can access:
 
 ## Module Variables
 
-Refer to the [module documentation](../../../modules/service/integrationsuite/README.md) for detailed information about all available variables and their descriptions.
+Refer to the [module documentation](../../modules/srv-integrationsuite/README.md) for detailed information about all available variables and their descriptions.
 
 ## Cleanup
 

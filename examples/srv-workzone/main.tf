@@ -24,7 +24,7 @@ module "subaccount" {
 }
 
 module "workzone" {
-  source  = "gambit-consulting/foundation/btp//modules/service/workzone"
+  source  = "gambit-consulting/foundation/btp//modules/srv-workzone"
   version = "0.1.0"
 
   subaccount_id          = module.subaccount.id
