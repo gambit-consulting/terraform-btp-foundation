@@ -33,3 +33,13 @@ module "integrationsuite" {
   plan_name     = var.integrationsuite_plan_name
   quota_amount  = var.integrationsuite_quota_amount
 }
+
+module "workzone" {
+  count  = var.enable_workzone ? 1 : 0
+  source = "./modules/service/workzone"
+
+  subaccount_id          = module.subaccount.id
+  service_name           = "SAPLaunchpad"
+  plan_name              = "standard"
+  trust_configuration_id = module.subaccount.custom_ias_trust_origin
+}

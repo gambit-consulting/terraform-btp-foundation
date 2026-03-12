@@ -157,3 +157,13 @@ variable "integrationsuite_quota_amount" {
     error_message = "Quota amount must be at least 1"
   }
 }
+
+# ============================================================================
+# Work Zone Service Configuration (Optional)
+# ============================================================================
+
+variable "enable_workzone" {
+  description = "Enable SAP Work Zone subscription"
+  type        = bool
+  default     = false
+}
