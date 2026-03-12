@@ -7,19 +7,18 @@ Community-driven Terraform modules for SAP Business Technology Platform (BTP). B
 ```
 terraform-btp-foundation/
 ├── modules/
-│   ├── subaccount/          # Subaccount management
-│   └── service/             # BTP service modules
-│       ├── integrationsuite/
-│       └── workzone/
-├── examples/                # Usage examples
-└── *.tf                     # Root module
+│   ├── subaccount/             # Subaccount management
+│   ├── srv-integrationsuite/   # Integration Suite service module
+│   └── srv-workzone/           # Work Zone service module
+├── examples/                   # Usage examples
+└── *.tf                        # Root module
 ```
 
 ## Available Modules
 
 - **subaccount** - Manage BTP subaccounts
-- **service/integrationsuite** - Integration Suite provisioning
-- **service/workzone** - Work Zone provisioning
+- **srv-integrationsuite** - Integration Suite provisioning
+- **srv-workzone** - Work Zone provisioning
 
 ## Contributing
 

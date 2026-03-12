@@ -22,7 +22,7 @@ module "subaccount" {
 }
 
 module "integration_suite" {
-  source  = "gambit-consulting/foundation/btp//modules/service/integrationsuite"
+  source  = "gambit-consulting/foundation/btp//modules/srv-integrationsuite"
   version = "0.0.1"
 
   subaccount_id = module.subaccount.id
